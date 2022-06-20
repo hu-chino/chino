@@ -13,12 +13,12 @@ packages = [
 ]
 
 # CLIコマンドにしたいもの
-console_scripts =[
+console_scripts = [
 ]
 
 setup(
     name='chinolab',
-    version='0.0.2',
+    version='0.0.3',
     packages=packages,
     install_requires=install_requires,
     entry_points={'console_scripts': console_scripts}
