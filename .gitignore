@@ -1,0 +1,9 @@
+*.egg-info
+dist/
+build/
+.python-version
+
+**/__pycache__
+**/*.pyc
+
+chinolab/sandbox/
