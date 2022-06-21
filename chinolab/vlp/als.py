@@ -1,7 +1,7 @@
 import numpy as np
 
 
-def interpolate(time, value, frequency, n_dft, threshold=1.0*10**8):
+def interpolate(time, value, frequency, n_dft, threshold=None):
     """ALSによる照度データを0次補間したものを返す
 
     :param list<float> time: サンプリング時刻の時系列データ
@@ -12,6 +12,9 @@ def interpolate(time, value, frequency, n_dft, threshold=1.0*10**8):
     :return: 補間後のデータ。(time, value)
     :rtype: 戻り値の型
     """
+    if not threshold:
+        threshold = 10**9 / frequency * 1.45
+
     T_s = 1 / frequency
     prev_time, prev_value = 0, -1
 
