@@ -13,15 +13,13 @@ def interpolate(time, value, frequency, n_dft, threshold=1.0*10**8):
     :rtype: 戻り値の型
     """
     T_s = 1 / frequency
-    prev_time = 0
-    prev_value = -1
+    prev_time, prev_value = 0, -1
 
     processed = []
     for i in range(len(time)):
-        if not prev_time or time[i] - prev_time < threshold:
+        if not prev_time or (time[i] - prev_time < threshold):
             processed.append((time[i], value[i]))
-            prev_time = time[i]
-            prev_value = value[i]
+            prev_time, prev_value = time[i], value[i]
         else:
             times = round((time[i] - prev_time) / (10**9 / n_dft), 0)
             for j in range(int(times) - 1):
